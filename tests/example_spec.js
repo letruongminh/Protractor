@@ -8,7 +8,10 @@ describe('Protractor Demo App', () => {
     browser.get('http://juliemr.github.io/protractor-demo/');
   }); 
 
-
+  it('Verify the web\'s title', () => {
+    var webTitle = browser.getTitle(); 
+    expect( webTitle ).toEqual('Super Calculator'); 
+  }); 
   it('one plus two', () => {
     firstNumber.sendKeys(1); 
     secondNumber.sendKeys(2); 
