@@ -4,10 +4,10 @@ describe('Protractor Demo App', () => {
   var goButton = element(by.id('gobutton')); 
   var latestRes = element(by.binding('latest')); 
 
-  it('Navigate to Super Calculator App', () => {
+  beforeEach(() => {
     browser.get('http://juliemr.github.io/protractor-demo/');
-    expect('Super Calculator').toEqual(browser.getTitle());  
-  });
+  }); 
+
 
   it('one plus two', () => {
     firstNumber.sendKeys(1); 
