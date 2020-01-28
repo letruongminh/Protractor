@@ -1,15 +1,20 @@
 describe('Protractor Demo App', () => {
+  var firstNumber = element(by.model('first')); 
+  var secondNumber = element(by.model('second')); 
+  var goButton = element(by.id('gobutton')); 
+  var latestRes = element(by.binding('latest')); 
+
   it('Navigate to Super Calculator App', () => {
     browser.get('http://juliemr.github.io/protractor-demo/');
     expect('Super Calculator').toEqual(browser.getTitle());  
   });
 
   it('one plus two', () => {
-    element(by.model('first')).sendKeys(1); 
-    element(by.model('second')).sendKeys(2); 
-    element(by.id('gobutton')).click();
+    firstNumber.sendKeys(1); 
+    secondNumber.sendKeys(2); 
+    goButton.click();
     
-    expect(element(by.binding('latest')).getText()).toEqual(5); 
+    expect( latestRes.getText()).toEqual('3'); 
   });
   
 }); 
