@@ -1,12 +1,9 @@
+var homepage = require('../pages/homepage'); 
 describe('Protractor Demo App', () => {
-  var firstNumber = element(by.model('first')); 
-  var secondNumber = element(by.model('second')); 
-  var goButton = element(by.id('gobutton')); 
-  var latestRes = element(by.binding('latest')); 
+  var url = 'http://juliemr.github.io/protractor-demo/'; 
 
-  beforeEach(() => {
-    browser.get('http://juliemr.github.io/protractor-demo/');
-  }); 
+  // Open the homepage url 
+  homepage.get(url); 
 
   it('Verify the web\'s title', () => {
     var webTitle = browser.getTitle(); 
@@ -14,11 +11,11 @@ describe('Protractor Demo App', () => {
   }); 
 
   it('one plus two', () => {
-    firstNumber.sendKeys(1); 
-    secondNumber.sendKeys(2); 
-    goButton.click();
+    homepage.enterFirstNumber(5); 
+    homepage.enterSecondNumber(6); 
+    homepage.clickGo(); 
     
-    expect( latestRes.getText()).toEqual('3'); 
+    homepage.verifyResult(); 
   });
   
   it('Verify the history', () => {
